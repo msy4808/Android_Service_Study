@@ -27,7 +27,7 @@ public class MyService extends Service {
     }
 
     private void processCommand(Intent intent, int flags, int startId){
-        String command = intent.getStringExtra("command");
+        String command = intent.getStringExtra("command"); //인텐트에서 부가데이터 가져오기
         String value = intent.getStringExtra("value");
         Log.d(TAG,"command : " + command + " | value : " + value);
 
@@ -39,6 +39,12 @@ public class MyService extends Service {
             }
             Log.d(TAG,"Waiting : " + i + "sec");
         }
+        Intent showintent = new Intent(getApplicationContext(),MainActivity.class); //인텐트를 띄우기 위해 액티비티 객체 만들기
+        //인텐트 안에 플래그 추가하기
+        showintent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        showintent.putExtra("command","show To Service");
+        showintent.putExtra("value", value+" first Service");
+        startActivity(showintent);
 
     }
     @Override
