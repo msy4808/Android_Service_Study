@@ -29,9 +29,9 @@ public class MyService extends Service {
     private void processCommand(Intent intent, int flags, int startId){
         String command = intent.getStringExtra("command");
         String value = intent.getStringExtra("value");
-        Log.d(TAG,"command : " + command + "| value : " + value);
+        Log.d(TAG,"command : " + command + " | value : " + value);
 
-        for(int i = 0;i < 5; i++){
+        for(int i = 1;i <= 5; i++){
             try{
                 Thread.sleep(1000);
             }catch (Exception e){
